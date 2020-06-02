@@ -12,7 +12,7 @@ today.date <- as.character(Sys.Date())
 
 #download zip file
 new.dir <- paste0("georgia/ga_GDPH_daily_status_report/raw-data/", today.date)
-dir.create(new.dir)
+dir.create(new.dir, recursive = T)
 download.file(url = "https://ga-covid19.ondemand.sas.com/docs/ga_covid_data.zip", 
               destfile = paste0(new.dir, "/ga_covid_data.zip"))
 
