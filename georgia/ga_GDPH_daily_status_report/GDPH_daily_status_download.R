@@ -7,11 +7,11 @@
 
 options(stringsAsFactors = F)
 
-current.time <- gsub(" ", "_", Sys.time())
+current.time <- Sys.time()
 today.date <- Sys.Date()
 
 #download zip file
-new.dir <- paste0("georgia/ga_GDPH_daily_status_report/raw-data/", current.time)
+new.dir <- paste0("georgia/ga_GDPH_daily_status_report/raw-data/", today.date)
 dir.create(new.dir)
 download.file(url = "https://ga-covid19.ondemand.sas.com/docs/ga_covid_data.zip", 
               destfile = paste0(new.dir, "/ga_covid_data.zip"))
