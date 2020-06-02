@@ -1,6 +1,6 @@
 # This workflow updates the GDPH daily status datsets downloaded from the GA DPH website
 
-name: gdph-daily-status
+name: gdph-daily-download
 
 # Controls when the action will run. Triggers the workflow on push or pull request
 # events but only for the autoupdate branch
@@ -25,14 +25,14 @@ jobs:
       with:
         r-version: '3.6.3'
     #Install curl 
-    - name: install curl
-      run: sudo apt-get install lwget
+    - name: install wget
+      run: sudo apt-get install wget
     #Install R package dependencies
       
       # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
     - uses: actions/checkout@master
     #scrape data from github
-    - name: Scrape data from GDPH website
+    - name: Download data from GDPH website
       run: Rscript georgia/ga_GDPH_daily_status_report/GDPH_daily_status_download.R
 
     #Push back to repo
