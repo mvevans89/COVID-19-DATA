@@ -31,9 +31,10 @@ Reads from the Georgia Department of Public Health website, demographic informat
 <b>Metadata: </b> </br>
  Column name description of data file:
 - `Age` - person's age 
-- `Gender` - person's gender
+- `Race` - person's race
+- `Sex` - person's sex
 - `County` - Georgia county  
-- `Underlying` - Existence of undelying condition (Yes, No, Unk)
+- `chronic_condition` - Existence of underlying condition (Yes, No, Unk)
 - `Latest_Status_Report` - Date and time of the last update on the website
 
 <b>Related subdirectory and/or files </b>
@@ -51,6 +52,7 @@ Reads from the Georgia Department of Public Health website, information about nu
 - `County` - County's name if known, otherwise it will appear as 'Unknown'
 - `Cases` - Number of cases per county
 - `Fatalities` - Number of fatalities per county
+- `Hospitalizations` - Number of Hospitalizations
 - `Latest_Status_Report` - Date and time of the last status update on the website
 
 <b>Related subdirectory and/or files </b>
@@ -65,10 +67,11 @@ Reads from the Georgia Department of Public Health website, information about nu
 
 <b>Metadata: </b> </br>
  Column name description of data file:
-- `Race` - Race
 - `Ethnicity` - Ethnicity  
+- `Race` - Race
 - `Cases` - Number of cases per ethnicity 
-- `Fatalities` - Number of fatalities per ethnicity 
+- `Deaths` - Number of fatalities per ethnicity 
+- `Latest_Status_Report` - Date and time of the last update
 
 <b>Related subdirectory and/or files </b>
 - TBD
