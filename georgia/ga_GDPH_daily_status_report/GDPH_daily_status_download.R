@@ -7,8 +7,8 @@
 
 options(stringsAsFactors = F)
 
-current.time <- Sys.time()
-today.date <- Sys.Date()
+current.time <- as.character(Sys.time())
+today.date <- as.character(Sys.Date())
 
 #download zip file
 new.dir <- paste0("georgia/ga_GDPH_daily_status_report/raw-data/", today.date)
@@ -46,10 +46,11 @@ old.report <- read.csv("georgia/ga_GDPH_daily_status_report/GA_daily_status_repo
 
 last.tail <- tail(old.report,1)
 
+
 # update with new things
 new.row <- data.frame(X = last.tail$X + 1,
                       date = today.date,
-                      time_reported = Sys.time(),
+                      time_reported = substr(current.time, 12, 20),
                       cases_cumulative = sum(new.cases$Cases),
                       fatalities_cumulative = sum(new.cases$Fatalities),
                       tests_cumulative = NA,
@@ -63,7 +64,8 @@ new.row <- data.frame(X = last.tail$X + 1,
                       source_tests = "https://ga-covid19.ondemand.sas.com/docs/ga_covid_data.zip",
                       source_hospitalizations = "https://ga-covid19.ondemand.sas.com/docs/ga_covid_data.zip")
 
-new.report <- rbind(old.report, new.row)
-
-#save
-write.csv(new.report, "georgia/ga_GDPH_daily_status_report/GA_daily_status_report_GDPH.csv", row.names = F)
+if(new.row$date != last.tail$date){
+  new.report <- rbind(old.report, new.row)
+  #save
+  write.csv(new.report, "georgia/ga_GDPH_daily_status_report/GA_daily_status_report_GDPH.csv", row.names = F)
+}
